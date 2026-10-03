@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WRD Tuition - Maths Tuition in Preston & Lancashire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0052CC;
+            --accent-red: #DC143C;
+            --light-bg: #F8FAFB;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #FFFFFF;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            max-width: 200px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-blue), #003DA5);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 400px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        section > .container > p:first-of-type {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        /* About Section */
+        #about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-content li {
+            padding: 0.7rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .about-content li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Services & Pricing Section */
+        #services h2 {
+            color: var(--primary-blue);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border-left: 4px solid var(--primary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.15);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin: 1rem 0;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .pricing-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+        }
+
+        .package {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            border: 1px solid var(--border-light);
+            font-size: 0.9rem;
+        }
+
+        .package strong {
+            display: block;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background: var(--light-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .stars {
+            color: #FDB022;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: white;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .contact-method {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .contact-method:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            word-break: break-word;
+        }
+
+        .response-note {
+            background: #FEF3CD;
+            border-left: 4px solid var(--accent-red);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .required {
+            color: var(--accent-red);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .optional-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, var(--primary-blue), #003DA5);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero .container,
+            #about .container,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="WRD Tuition Logo">
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Build Confidence, Master Maths</h1>
+                <p>Expert tuition for secondary school students across Preston and Lancashire. 1-to-1, small group, and online options available.</p>
+                <a href="#contact" class="cta-button">Get Started Today</a>
+            </div>
+            <div class="hero-image">
+                <img src="picture2.jpg" alt="Maths tutor">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>With 7 years of experience as a secondary school maths teacher, I'm dedicated to helping young people develop genuine confidence and competence in mathematics.</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; margin-bottom: 3rem;">
+                <!-- Left Column -->
+                <div class="about-content">
+                    <h3>My Approach</h3>
+                    <p style="color: var(--text-light);">I believe every student can succeed at maths. My teaching focuses on building understanding from the ground up, breaking down complex concepts into manageable steps. Whether you're aiming for a strong GCSE pass or pushing for the highest grades, I adapt my teaching to your specific needs.</p>
+
+                    <h3>What I Teach</h3>
+                    <ul>
+                        <li>Foundation Tier GCSE Maths</li>
+                        <li>Higher Tier GCSE Maths</li>
+                        <li>A-Level Mathematics</li>
+                        <li>Exam technique & confidence building</li>
+                        <li>KS3 & KS4 curriculum support</li>
+                    </ul>
+                </div>
+
+                <!-- Right Column - Picture -->
+                <div style="border-radius: 1rem; overflow: hidden;">
+                    <img src="picture1.jpg" alt="Small group tuition session" style="width: 100%; height: auto; display: block; border-radius: 1rem;">
+                </div>
+            </div>
+
+            <!-- Stats Below -->
+            <div style="background: var(--light-bg); padding: 2rem; border-radius: 1rem; text-align: center; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">7+</div>
+                    <p style="color: var(--text-light);">Years of Teaching Experience</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--accent-red); margin-bottom: 0.5rem;">Proven Results</div>
+                    <p style="color: var(--text-light);">Higher & Foundation Tier Success</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Section -->
+    <section style="background: var(--light-bg); padding: 4rem 2rem;">
+        <div class="container" style="text-align: center;">
+            <img src="logo.png" alt="WRD Tuition Logo" style="height: 280px; width: auto; margin-bottom: 2rem;">
+            <h3 style="color: var(--primary-blue); font-size: 1.3rem; letter-spacing: 0.05em;">Building Brighter Minds</h3>
+        </div>
+    </section>
+
+    <!-- Services & Pricing -->
+    <section id="services">
+        <div class="container">
+            <h2>Services & Pricing</h2>
+            <p>Flexible tuition options to suit your needs and schedule.</p>
+
+            <div class="pricing-grid">
+                <!-- 1-to-1 In-Person -->
+                <div class="pricing-card">
+                    <h3>1-to-1 In-Person</h3>
+                    <div class="price">£40<span style="font-size: 0.8rem; color: var(--text-light);">/hour</span></div>
+                    <ul>
+                        <li>Sessions at your home</li>
+                        <li>Tailored to your child's needs</li>
+                        <li>Flexible scheduling</li>
+                        <li>Typically 1 hour (flexible)</li>
+                    </ul>
+                    <div class="package">
+                        <strong>Package Deal</strong>
+                        10 hours for £350
+                    </div>
+                </div>
+
+                <!-- Small Group Evening -->
+                <div class="pricing-card">
+                    <h3>Small Group Sessions</h3>
+                    <div class="price">£25<span style="font-size: 0.8rem; color: var(--text-light);">/person/hour</span></div>
+                    <ul>
+                        <li>Evening sessions</li>
+                        <li>Local community centre</li>
+                        <li>Max 6 students per group</li>
+                        <li>Typically 2 hours</li>
+                    </ul>
+                    <div class="package">
+                        <strong>Package Deal</strong>
+                        10 hours (5 sessions) for £250 per person
+                    </div>
+                </div>
+
+                <!-- Online Individual -->
+                <div class="pricing-card">
+                    <h3>Online Individual</h3>
+                    <div class="price">£35<span style="font-size: 0.8rem; color: var(--text-light);">/hour</span></div>
+                    <ul>
+                        <li>One-to-one online sessions</li>
+                        <li>Study from anywhere</li>
+                        <li>Screen sharing & resources</li>
+                        <li>Flexible times</li>
+                    </ul>
+                    <div class="package">
+                        <strong>Package Deal</strong>
+                        10 hours for £300
+                    </div>
+                </div>
+
+                <!-- Online Group -->
+                <div class="pricing-card">
+                    <h3>Online Group</h3>
+                    <div class="price">£25<span style="font-size: 0.8rem; color: var(--text-light);">/person/hour</span></div>
+                    <ul>
+                        <li>Small group online</li>
+                        <li>Max 4 students</li>
+                        <li>Interactive sessions</li>
+                        <li>Typically 2 hours</li>
+                    </ul>
+                    <div class="package">
+                        <strong>Package Deal</strong>
+                        10 hours for £200 per person
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Students & Parents Say</h2>
+            <p>Real feedback from families we've worked with.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">"My son was struggling with algebra, but after just 4 sessions with WRD, he's now confident and his mock grades improved by a whole grade. Couldn't recommend highly enough!"</div>
+                    <div class="testimonial-author">Sarah & James</div>
+                    <div class="testimonial-role">Parents, Year 10</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">"The small group sessions are brilliant. My daughter learns better with others, and she looks forward to the sessions now. Her confidence is through the roof."</div>
+                    <div class="testimonial-author">Emma</div>
+                    <div class="testimonial-role">Parent, Year 9</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">"I went from dreading maths exams to actually enjoying them. The explanations make sense, and my tutor breaks everything down so you understand it properly."</div>
+                    <div class="testimonial-author">Oliver</div>
+                    <div class="testimonial-role">Student, Year 11 (GCSE)</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">"We used online tuition during the lockdowns and it worked perfectly. Professional, engaging, and my daughter's maths grades went from a 4 to a 7. Amazing!"</div>
+                    <div class="testimonial-author">Michael & Claire</div>
+                    <div class="testimonial-role">Parents, Year 11</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>Ready to give your child the maths boost they need? Contact us today to arrange a session or discuss your requirements.</p>
+
+            <div class="contact-wrapper">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3>Contact Details</h3>
+
+                    <div class="contact-method">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value"><a href="tel:07123456789" style="color: var(--primary-blue); text-decoration: none;">07123456789</a></div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value"><a href="mailto:hello@wrdtuition.com" style="color: var(--primary-blue); text-decoration: none;">hello@wrdtuition.com</a></div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-label">Area</div>
+                        <div class="contact-value">Preston & Lancashire</div>
+                    </div>
+
+                    <div class="response-note">
+                        <strong>Response Time</strong><br>
+                        We'll get back to you within 3 days of your inquiry.
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Parent/Guardian Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact Details <span class="required">*</span></label>
+                        <input type="text" id="contact" name="contact" placeholder="Phone or email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year-group">Child's Year Group <span class="required">*</span></label>
+                        <select id="year-group" name="year_group" required>
+                            <option value="">-- Select Year Group --</option>
+                            <option value="Year 7">Year 7</option>
+                            <option value="Year 8">Year 8</option>
+                            <option value="Year 9">Year 9</option>
+                            <option value="Year 10">Year 10</option>
+                            <option value="Year 11">Year 11 (GCSE)</option>
+                            <option value="Year 12">Year 12 (A-Level)</option>
+                            <option value="Year 13">Year 13 (A-Level)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="current-level">Current Maths Level <span class="optional-label">(optional)</span></label>
+                        <input type="text" id="current-level" name="current_level" placeholder="e.g. Grade 4, Foundation Tier">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tuition-method">Preferred Tuition Method <span class="optional-label">(optional)</span></label>
+                        <select id="tuition-method" name="tuition_method">
+                            <option value="">-- Select Method --</option>
+                            <option value="1-to-1 In-Person">1-to-1 In-Person</option>
+                            <option value="Small Group">Small Group Evening</option>
+                            <option value="Online Individual">Online Individual</option>
+                            <option value="Online Group">Online Group</option>
+                            <option value="Not Sure">Not Sure Yet</option>
+                        </select>
+                    </div>
+
+                    <input type="submit" value="Request a Call Back">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 WRD Tuition. All rights reserved. | Maths Tuition in Preston & Lancashire</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
